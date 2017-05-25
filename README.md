@@ -10,32 +10,20 @@
   
   >/** 录音器**/
   
-        -(AVAudioRecorder *)audioRecorder{
-
-        if (!_audioRecorder) {
-
-          NSError * error = nil;
-
-          _audioRecorder = [[AVAudioRecorder alloc] initWithURL:[[MKTool sharedMKTool] getAudioName] settings:[[MKTool sharedMKTool] recorderSettings] error:&error];
-
-          _audioRecorder.delegate = self;
-
-          _audioRecorder.meteringEnabled = YES;//监听分贝
-
-          if(error){
-
-              NSLog(@"%s",__func__);
-
-              return nil;
-
+      -(AVAudioRecorder *)audioRecorder{
+          if (!_audioRecorder) {
+              NSError * error = nil;
+              _audioRecorder = [[AVAudioRecorder alloc] initWithURL:[[MKTool sharedMKTool] getAudioName] settings:[[MKTool sharedMKTool] recorderSettings] error:&error];
+              _audioRecorder.delegate = self;
+              _audioRecorder.meteringEnabled = YES;//监听分贝
+              if(error){
+                  NSLog(@"%s",__func__);
+                  return nil;
+              }
           }
-
+          return _audioRecorder;
       }
 
-      return _audioRecorder;
-
-      }
- 
 
 >/** 录音设置**/
 
