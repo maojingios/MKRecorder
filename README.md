@@ -1,5 +1,5 @@
 # MKRecorder
-# MKRecorder
+
   ### 1、情景
   >公司项目需要接入发送语音的功能，项目涉及录音、转码，然后发送给服务器。项目中每次只需要录制一条语音，存在沙河，新录制的音频文件都将替换上一次旧的的音频文件。
   目前功能是已经完工上线，得空做一个简单的录音demo，在这里，会将每次录的音频文件缓存至沙河MKAudioFile文件夹当中，再将MKAudioFile文件
@@ -7,37 +7,39 @@
   整个过程是没有特别技术难点，内容涉及单利设计模式、AVAudioRecorder的使用、沙河路径下文件存取。皆为基础内容，在这里分享下！
   
   ### 2、正文（AVAudioRecorder的使用）
+  
   >/** 录音器**/
   
--(AVAudioRecorder *)audioRecorder{
+        -(AVAudioRecorder *)audioRecorder{
 
-    if (!_audioRecorder) {
-    
-        NSError * error = nil;
-        
-        _audioRecorder = [[AVAudioRecorder alloc] initWithURL:[[MKTool sharedMKTool] getAudioName] settings:[[MKTool sharedMKTool] recorderSettings] error:&error];
-        
-        _audioRecorder.delegate = self;
-        
-        _audioRecorder.meteringEnabled = YES;//监听分贝
-        
-        if(error){
-        
-            NSLog(@"%s",__func__);
-            
-            return nil;
-            
-        }
-        
-    }
-    
-    return _audioRecorder;
-    
-}
+        if (!_audioRecorder) {
+
+          NSError * error = nil;
+
+          _audioRecorder = [[AVAudioRecorder alloc] initWithURL:[[MKTool sharedMKTool] getAudioName] settings:[[MKTool sharedMKTool] recorderSettings] error:&error];
+
+          _audioRecorder.delegate = self;
+
+          _audioRecorder.meteringEnabled = YES;//监听分贝
+
+          if(error){
+
+              NSLog(@"%s",__func__);
+
+              return nil;
+
+          }
+
+      }
+
+      return _audioRecorder;
+
+      }
+ 
 
 >/** 录音设置**/
 
--(NSDictionary *)recorderSettings{
+    -(NSDictionary *)recorderSettings{
 
     NSMutableDictionary * settingsDic = [NSMutableDictionary dictionary];
     
@@ -53,10 +55,10 @@
     
     return settingsDic;
     
-}
+    }
 >/** 创建录音存储文件夹**/
 
--(void)creatAudioFile{
+    -(void)creatAudioFile{
 
     NSString * filePath = [NSString stringWithFormat:@"%@/MKAudioFile",SanboxPath];
     
@@ -70,7 +72,7 @@
 
 >/** 录音文件名**/
 
--(NSURL *)getAudioName{
+    -(NSURL *)getAudioName{
 
     NSDate * date = [NSDate date];
     
@@ -86,7 +88,7 @@
     
     return [NSURL URLWithString:audioPath];
     
-}
+    }
 
 ### 2、结尾
 
