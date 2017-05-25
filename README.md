@@ -7,8 +7,9 @@
   整个过程是没有特别技术难点，内容涉及单利设计模式、AVAudioRecorder的使用、沙河路径下文件存取。皆为基础内容，在这里分享下！
   
   ### 2、正文（AVAudioRecorder的使用）
-  /** 录音器**/
->-(AVAudioRecorder *)audioRecorder{
+  >/** 录音器**/
+  
+-(AVAudioRecorder *)audioRecorder{
 
     if (!_audioRecorder) {
     
@@ -34,8 +35,9 @@
     
 }
 
-/** 录音设置**/
->-(NSDictionary *)recorderSettings{
+>/** 录音设置**/
+
+-(NSDictionary *)recorderSettings{
 
     NSMutableDictionary * settingsDic = [NSMutableDictionary dictionary];
     
@@ -52,8 +54,9 @@
     return settingsDic;
     
 }
-/** 创建录音存储文件夹**/
->-(void)creatAudioFile{
+>/** 创建录音存储文件夹**/
+
+-(void)creatAudioFile{
 
     NSString * filePath = [NSString stringWithFormat:@"%@/MKAudioFile",SanboxPath];
     
@@ -65,8 +68,9 @@
     
 }
 
-/** 录音文件名**/
->-(NSURL *)getAudioName{
+>/** 录音文件名**/
+
+-(NSURL *)getAudioName{
 
     NSDate * date = [NSDate date];
     
@@ -85,6 +89,7 @@
 }
 
 ### 2、结尾
+
 >仔细观察过我手机（魅族）上面的录音APP，简洁好用又漂亮，例如类似水波浪的表示分贝的动效，感觉不错，得空再加上。
 
 
